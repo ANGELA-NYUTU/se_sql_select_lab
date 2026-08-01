@@ -46,7 +46,7 @@ df_short_title = employee_data["jobTitle"].str[:2].to_frame(name="short_title")
 sum_total_price = pd.read_sql("""
 SELECT ROUND(priceEach * quantityOrdered) AS total_price
 FROM orderDetails;
-""", conn)["total_price"].sum()
+""", conn).sum()
 
 
 # STEP 9
