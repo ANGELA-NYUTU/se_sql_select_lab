@@ -11,12 +11,12 @@ conn = sqlite3.connect("data.sqlite")
 employee_data = pd.read_sql("SELECT * FROM employees", conn)
 
 # STEP 2
-df_first_five = employee_data[['employeeNumber', 'lastName']].head(5)
+df_first_five = pd.read_sql("SELECT employeeNumber, lastName FROM employees", conn).head(5)
 
 
 # STEP 3
 # Replace None with your code
-df_five_reverse = employee_data[['lastName','employeeNumber']].tail(5)
+df_five_reverse = pd.read_sql("SELECT lastName, employeeNumber FROM employees", conn).tail(5)
 
 # STEP 4
 # Replace None with your code
