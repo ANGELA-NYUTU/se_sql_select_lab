@@ -9,24 +9,19 @@ conn = sqlite3.connect("data.sqlite")
 # Add code below and run file to see data from employees table
 
 employee_data = pd.read_sql("SELECT * FROM employees", conn)
-print("---------------------Employee Data---------------------")
-print(employee_data)
-print("-------------------End Employee Data-------------------")
-
 
 # STEP 2
 df_first_five = employee_data[['employeeNumber', 'lastName']].head(5)
 
-print(df_first_five)
 
 # STEP 3
 # Replace None with your code
 df_five_reverse = employee_data[['lastName','employeeNumber']].tail(5)
-print(df_five_reverse)
+
 # STEP 4
 # Replace None with your code
 df_alias = employee_data.rename(columns={"employeeNumber": "ID"})[["lastName","ID"]].tail(5)
-print(df_alias)
+
 
 # STEP 5
 df_executive = employee_data.copy()
@@ -35,16 +30,16 @@ df_executive.loc[
     df_executive["jobTitle"].isin(["President", "VP Sales", "VP Marketing"]),
     "role"
 ] = "Executive"
-print(df_executive)
+
 
 # STEP 6
 # Replace None with your code
 df_name_length = employee_data["lastName"].str.len().to_frame(name="name_length")
-print(df_name_length)
+
 # STEP 7
 # Replace None with your code
 df_short_title = employee_data["jobTitle"].str[:2].to_frame(name="short_title")
-print(df_short_title)
+
 
 # STEP 8
 # Replace None with your code
@@ -52,7 +47,7 @@ sum_total_price = pd.read_sql("""
 SELECT ROUND(priceEach * quantityOrdered) AS total_price
 FROM orderDetails;
 """, conn)["total_price"].sum()
-print(sum_total_price)
+
 
 # STEP 9
 # Replace None with your code
@@ -65,5 +60,4 @@ SELECT
 FROM orders;
 """, conn)
 
-print(df_day_month_year)
 conn.close()
